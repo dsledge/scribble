@@ -27,12 +27,12 @@ func main() {
         scribble.NewFileLogger(*loglevel, *logfile)
     }
     
-    scribble.Trace("Trace level log message to "%s", *logfile) 
-    scribble.Debug("Debug level log message to "%s", *logfile) 
-    scribble.Info("Info level log message to "%s", *logfile) 
-    scribble.Warn("Warn level log message to "%s", *logfile) 
-    scribble.Error("Error level log message to "%s", *logfile) 
-    //scribble.Fatal("Fatal level log message to "%s", *logfile) 
+    scribble.Trace("Trace level log message to %s", *logfile) 
+    scribble.Debug("Debug level log message to %s", *logfile) 
+    scribble.Info("Info level log message to %s", *logfile) 
+    scribble.Warn("Warn level log message to %s", *logfile) 
+    scribble.Error("Error level log message to %s", *logfile) 
+    //scribble.Fatal("Fatal level log message to %s", *logfile) 
 }
 ```
 
