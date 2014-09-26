@@ -14,13 +14,13 @@ const (
 	RESET  	= "\033[0;0m"
 )
 
-
 func NewConsoleLogger(level int) {
 	// Initializing the needed variables
 	loglevel = level
 	write = make(chan string)
 	done = make(chan bool)
 	stop = make(chan bool)
+	color = true
 
 	go writeToConsole()
 }

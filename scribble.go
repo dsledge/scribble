@@ -39,6 +39,7 @@ var (
 	write chan string
 	done chan bool
 	stop chan bool
+	color 	bool
 )
 
 // Builds the logfile prefix to print in front of the message. An example of the format
@@ -109,7 +110,11 @@ func parseLevel(level int) string {
 func Trace(msg string, data ...interface{}) {
 	result := fmt.Sprintf(msg, data...)
 	if loglevel <= TRACE {
-		write <-BLUE+prefix(TRACE)+result+BLACK
+		if color {
+			write <-BLUE+prefix(TRACE)+result+BLACK
+		} else {
+			write <-prefix(TRACE)+result
+		}
 	}
 }
 
@@ -120,7 +125,11 @@ func Trace(msg string, data ...interface{}) {
 func Debug(msg string, data ...interface{}) {
 	result := fmt.Sprintf(msg, data...)
 	if loglevel <= DEBUG {
-		write <-GREEN+prefix(DEBUG)+result+BLACK
+		if color {
+			write <-GREEN+prefix(DEBUG)+result+BLACK
+		} else {
+			write <-prefix(DEBUG)+result
+		}
 	}
 }
 
@@ -131,7 +140,11 @@ func Debug(msg string, data ...interface{}) {
 func Info(msg string, data ...interface{}) {
 	result := fmt.Sprintf(msg, data...)
 	if loglevel <= INFO {
-		write <-BLACK+prefix(INFO)+result+BLACK
+		if color {
+			write <-BLACK+prefix(INFO)+result+BLACK
+		} else {
+			write <-prefix(INFO)+result
+		}
 	}
 }
 
@@ -142,7 +155,11 @@ func Info(msg string, data ...interface{}) {
 func Warn(msg string, data ...interface{}) {
 	result := fmt.Sprintf(msg, data...)
 	if loglevel <= WARN {
-		write <-YELLOW+prefix(WARN)+result+BLACK
+		if color {
+			write <-YELLOW+prefix(WARN)+result+BLACK
+		} else {
+			write <-prefix(WARN)+result
+		}
 	}
 }
 
@@ -153,7 +170,11 @@ func Warn(msg string, data ...interface{}) {
 func Error(msg string, data ...interface{}) {
 	result := fmt.Sprintf(msg, data...)
 	if loglevel <= ERROR {
-		write <-RED+prefix(ERROR)+result+BLACK
+		if color {
+			write <-RED+prefix(ERROR)+result+BLACK
+		} else {
+			write <-prefix(ERROR)+result
+		}
 	}
 }
 
@@ -164,7 +185,11 @@ func Error(msg string, data ...interface{}) {
 func Fatal(msg string, data ...interface{}) {
 	result := fmt.Sprintf(msg, data...)
 	if loglevel <= FATAL {
-		write <-PURPLE+prefix(FATAL)+result+BLACK
+		if color {
+			write <-PURPLE+prefix(FATAL)+result+BLACK
+		} else {
+			write <-prefix(FATAL)+result
+		}
 		panic(result)
 	}
 }

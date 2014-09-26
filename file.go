@@ -21,6 +21,7 @@ func NewFileLogger(level int, filename string) {
 	write = make(chan string)
 	done = make(chan bool)
 	stop = make(chan bool)
+	color = false
 
 	// Setting up the signal handler for log rotate
 	sigRecv := make(chan os.Signal)
