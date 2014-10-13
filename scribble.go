@@ -111,7 +111,7 @@ func Trace(msg string, data ...interface{}) {
 	result := fmt.Sprintf(msg, data...)
 	if loglevel <= TRACE {
 		if color {
-			write <-BLUE+prefix(TRACE)+result+BLACK
+			write <-BLUE+prefix(TRACE)+result+RESET
 		} else {
 			write <-prefix(TRACE)+result
 		}
@@ -126,7 +126,7 @@ func Debug(msg string, data ...interface{}) {
 	result := fmt.Sprintf(msg, data...)
 	if loglevel <= DEBUG {
 		if color {
-			write <-GREEN+prefix(DEBUG)+result+BLACK
+			write <-GREEN+prefix(DEBUG)+result+RESET
 		} else {
 			write <-prefix(DEBUG)+result
 		}
@@ -141,7 +141,7 @@ func Info(msg string, data ...interface{}) {
 	result := fmt.Sprintf(msg, data...)
 	if loglevel <= INFO {
 		if color {
-			write <-BLACK+prefix(INFO)+result+BLACK
+			write <-prefix(INFO)+result
 		} else {
 			write <-prefix(INFO)+result
 		}
@@ -156,7 +156,7 @@ func Warn(msg string, data ...interface{}) {
 	result := fmt.Sprintf(msg, data...)
 	if loglevel <= WARN {
 		if color {
-			write <-YELLOW+prefix(WARN)+result+BLACK
+			write <-YELLOW+prefix(WARN)+result+RESET
 		} else {
 			write <-prefix(WARN)+result
 		}
@@ -171,7 +171,7 @@ func Error(msg string, data ...interface{}) {
 	result := fmt.Sprintf(msg, data...)
 	if loglevel <= ERROR {
 		if color {
-			write <-RED+prefix(ERROR)+result+BLACK
+			write <-RED+prefix(ERROR)+result+RESET
 		} else {
 			write <-prefix(ERROR)+result
 		}
@@ -186,7 +186,7 @@ func Fatal(msg string, data ...interface{}) {
 	result := fmt.Sprintf(msg, data...)
 	if loglevel <= FATAL {
 		if color {
-			write <-PURPLE+prefix(FATAL)+result+BLACK
+			write <-PURPLE+prefix(FATAL)+result+RESET
 		} else {
 			write <-prefix(FATAL)+result
 		}
