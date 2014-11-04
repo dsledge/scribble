@@ -126,7 +126,7 @@ func Debug(msg string, data ...interface{}) {
 	result := fmt.Sprintf(msg, data...)
 	if loglevel <= DEBUG {
 		if color {
-			write <-GREEN+prefix(DEBUG)+result+RESET
+			write <-CYAN+prefix(DEBUG)+result+RESET
 		} else {
 			write <-prefix(DEBUG)+result
 		}
